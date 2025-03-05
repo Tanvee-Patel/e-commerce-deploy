@@ -27,7 +27,7 @@ function VerifyOtp() {
 
     setIsLoading(true);
     try {
-      const baseURL = import.meta.env.BACKEND_URL;
+      const baseURL = import.meta.env.VITE_BACKEND_URL;
       const { data } = await axios.post(`${baseURL}/auth/verify-otp`, { email: decodedEmail, otp });
       toast.success(data?.message || 'OTP verified successfully.');
       navigate(`/auth/reset-password/${encodeURIComponent(data.resetToken)}?email=${encodeURIComponent(email)}`);

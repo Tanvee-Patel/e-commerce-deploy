@@ -4,7 +4,7 @@ import axios from "axios";
 
 export const addFeatureImage = createAsyncThunk('addFeatureImage', async (image) => {
    const response = await axios.post(
-      `${import.meta.env.BACKEND_URL}/common/feature/add`,
+      `${import.meta.env.VITE_BACKEND_URL}/common/feature/add`,
       {image}
    );
    return response.data;
@@ -12,13 +12,13 @@ export const addFeatureImage = createAsyncThunk('addFeatureImage', async (image)
 
 export const getFeatureImages = createAsyncThunk('getFeatureImage', async () => {
    const response = await axios.get(
-      `${import.meta.env.BACKEND_URL}/common/feature/get`,
+      `${import.meta.env.VITE_BACKEND_URL}/common/feature/get`,
    );
    return response.data;
 })
 
 export const deleteFeatureImage = createAsyncThunk('deleteFeatureImage', async(imageId)=>{
-   const response = await axios.delete(`${import.meta.env.BACKEND_URL}/common/feature/delete/${imageId}`)
+   const response = await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/common/feature/delete/${imageId}`)
    return response.data;
 })
 

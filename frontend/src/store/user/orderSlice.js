@@ -4,7 +4,7 @@ import axios from 'axios';
 export const createOrder = createAsyncThunk('/order/createOrder', async (orderData, { rejectWithValue }) => {
   try {
     const response = await axios.post(
-      `${import.meta.env.BACKEND_URL}/user/order/create`,
+      `${import.meta.env.VITE_BACKEND_URL}/user/order/create`,
       orderData
     );
     return response.data;
@@ -16,7 +16,7 @@ export const createOrder = createAsyncThunk('/order/createOrder', async (orderDa
 export const capturePayment = createAsyncThunk('/order/capturePayment', async ({ paymentId, payerId, orderId }, { rejectWithValue }) => {  
   try {
     const response = await axios.post(
-      `${import.meta.env.BACKEND_URL}/user/order/capture`,
+      `${import.meta.env.VITE_BACKEND_URL}/user/order/capture`,
       {
         paymentId, payerId, orderId
       }
@@ -30,7 +30,7 @@ export const capturePayment = createAsyncThunk('/order/capturePayment', async ({
 export const getAllOrderByUser = createAsyncThunk(
   '/order/getAllOrderByUser', async (userId) => {
     const response = await axios.get(
-      `${import.meta.env.BACKEND_URL}/user/order/list/${userId}`,
+      `${import.meta.env.VITE_BACKEND_URL}/user/order/list/${userId}`,
     );
     return response.data;
   })
@@ -38,7 +38,7 @@ export const getAllOrderByUser = createAsyncThunk(
 export const getOrderDetails = createAsyncThunk(
   '/order/getOrderDetails', async (id) => {
     const response = await axios.get(
-      `${import.meta.env.BACKEND_URL}/user/order/details/${id}`);
+      `${import.meta.env.VITE_BACKEND_URL}/user/order/details/${id}`);
     return response.data;
   })
 

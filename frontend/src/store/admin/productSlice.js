@@ -8,7 +8,7 @@ const initialState = {
 
 export const addNewProduct = createAsyncThunk('/products/addnewproduct',async (formData)=>{
    const result = await axios.post(
-      `${import.meta.env.BACKEND_URL}/admin/products/add`,
+      `${import.meta.env.VITE_BACKEND_URL}/admin/products/add`,
       formData,
       {
         headers: {
@@ -21,14 +21,14 @@ export const addNewProduct = createAsyncThunk('/products/addnewproduct',async (f
 
 export const fetchAllProducts = createAsyncThunk('/products/fetchAllProducts',async ()=>{
    const result = await axios.get(
-      `${import.meta.env.BACKEND_URL}/admin/products/get`,
+      `${import.meta.env.VITE_BACKEND_URL}/admin/products/get`,
     );
     return result?.data;
 })
 
 export const editProduct = createAsyncThunk('/products/editProduct',async ({id, formData})=>{
    const result = await axios.put(
-      `${import.meta.env.BACKEND_URL}/admin/products/edit/${id}`,
+      `${import.meta.env.VITE_BACKEND_URL}/admin/products/edit/${id}`,
       formData,
       {
         headers: {
@@ -41,7 +41,7 @@ export const editProduct = createAsyncThunk('/products/editProduct',async ({id, 
 
 export const deleteProduct = createAsyncThunk('/products/deleteProduct',async (id)=>{
    const result = await axios.delete(
-      `${import.meta.env.BACKEND_URL}/admin/products/delete/${id}`
+      `${import.meta.env.VITE_BACKEND_URL}/admin/products/delete/${id}`
     );
     return result?.data;
 })

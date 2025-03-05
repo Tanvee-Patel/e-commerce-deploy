@@ -20,14 +20,14 @@ export const fetchAllFilteredProducts = createAsyncThunk('/products/fetchAllFilt
    query.append('sortBy', sortParams);
 
    const result = await axios.get(
-      `${import.meta.env.BACKEND_URL}/user/products/get?${query.toString()}`
+      `${import.meta.env.VITE_BACKEND_URL}/user/products/get?${query.toString()}`
    );
    return result?.data;
 })
 
 export const fetchProductDetails = createAsyncThunk('/products/fetchProductDetails', async (id) => {
    const result = await axios.get(
-      `${import.meta.env.BACKEND_URL}/user/products/get/${id}`,
+      `${import.meta.env.VITE_BACKEND_URL}/user/products/get/${id}`,
    );
    return result?.data;
 })

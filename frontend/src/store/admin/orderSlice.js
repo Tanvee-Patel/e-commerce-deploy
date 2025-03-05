@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 export const getAllOrderOfAllUsers = createAsyncThunk(
    '/order/getAllOrderByUser', async () => {
       const response = await axios.get(
-         `${import.meta.env.BACKEND_URL}/admin/order/get-orders`,
+         `${import.meta.env.VITE_BACKEND_URL}/admin/order/get-orders`,
       );
       return response.data;
    })
@@ -13,14 +13,14 @@ export const getAllOrderOfAllUsers = createAsyncThunk(
 export const getAdminOrderDetails = createAsyncThunk(
    '/order/getOrderDetails', async (id) => {
       const response = await axios.get(
-         `${import.meta.env.BACKEND_URL}/admin/order/details/${id}`);
+         `${import.meta.env.VITE_BACKEND_URL}/admin/order/details/${id}`);
       return response.data;
    })
 
 export const updateOrderStatus = createAsyncThunk(
    '/order/updateOrderStatus', async ({ id, orderStatus }) => {
       const response = await axios.put(
-         `${import.meta.env.BACKEND_URL}/admin/order/update/${id}`, { orderStatus });
+         `${import.meta.env.VITE_BACKEND_URL}/admin/order/update/${id}`, { orderStatus });
       if (response.data.success) {
          if (orderStatus.toLowerCase() === "confirmed") {
             toast.success("Confirmation email sent to the customer!");
@@ -34,7 +34,7 @@ export const sendOrderEmail = createAsyncThunk(
       console.log("Sending mail req", { email, orderId, status });
       try {
          const response = await axios.post(
-            `${import.meta.env.BACKEND_URL}/admin/order/send-mail`, {
+            `${import.meta.env.VITE_BACKEND_URL}/admin/order/send-mail`, {
             email,
             orderId,
             status

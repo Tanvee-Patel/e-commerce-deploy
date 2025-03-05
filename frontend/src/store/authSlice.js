@@ -12,7 +12,7 @@ export const registerUser = createAsyncThunk(
   '/auth/register',
   async (FormData, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${import.meta.env.BACKEND_URL}/auth/register`, FormData, {
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/register`, FormData, {
         withCredentials: true,
       });
       return response.data;
@@ -26,7 +26,7 @@ export const loginUser = createAsyncThunk(
   '/auth/login',
   async (FormData, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${import.meta.env.BACKEND_URL}/auth/login`, FormData, {
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/login`, FormData, {
         withCredentials: true,
       });
       return response.data;
@@ -42,7 +42,7 @@ export const logoutUser = createAsyncThunk(
   "/auth/logout",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${import.meta.env.BACKEND_URL}/auth/logout`, {}, {
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/logout`, {}, {
         withCredentials: true,
       });
       return response.data;
@@ -56,7 +56,7 @@ export const checkAuth = createAsyncThunk(
   '/auth/checkAuth',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`${import.meta.env.BACKEND_URL}/auth/check-auth`, {
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/auth/check-auth`, {
         withCredentials: true, 
       });
       return response.data;

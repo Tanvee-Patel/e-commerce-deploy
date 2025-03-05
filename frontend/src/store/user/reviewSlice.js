@@ -6,7 +6,7 @@ export const addProductReview = createAsyncThunk('/addProductReview',
    async (reviewData, { rejectWithValue }) => {
    try {
       const response = await axios.post(
-         `${import.meta.env.BACKEND_URL}/user/review/add`,
+         `${import.meta.env.VITE_BACKEND_URL}/user/review/add`,
          reviewData
       );
       return response.data;
@@ -17,7 +17,7 @@ export const addProductReview = createAsyncThunk('/addProductReview',
 
 export const getProductReviews = createAsyncThunk('/getProductReviews', async (productId) => {
    const response = await axios.get(
-      `${import.meta.env.BACKEND_URL}/user/review/${productId}`,
+      `${import.meta.env.VITE_BACKEND_URL}/user/review/${productId}`,
    );
    return response.data;
 })

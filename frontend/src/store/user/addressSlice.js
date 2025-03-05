@@ -8,22 +8,22 @@ const initialState = {
 }
 
 export const addNewAddress = createAsyncThunk('/addresses/addNewAddress', async (FormData) => {
-   const response = await axios.post(`${import.meta.env.BACKEND_URL}/user/address/add`, FormData)
+   const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/address/add`, FormData)
    return response.data;
 })
  
 export const editAddress = createAsyncThunk('/addresses/editAddress', async ({ userId, addressId, formData }) => {
-   const response = await axios.put(`${import.meta.env.BACKEND_URL}/user/address/update/${userId}/${addressId}`, formData)
+   const response = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/user/address/update/${userId}/${addressId}`, formData)
    return response.data;
 })
 
 export const fetchAllAddress = createAsyncThunk('/addresses/fetchAllAddress', async ( userId ) => {
-   const response = await axios.get(`${import.meta.env.BACKEND_URL}/user/address/get/${userId}`)
+   const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/address/get/${userId}`)
    return response.data;
 })
 
 export const deleteAddress = createAsyncThunk('/addresses/deleteAddress', async ({ userId, addressId }) => {
-   const response = await axios.delete(`${import.meta.env.BACKEND_URL}/user/address/delete/${userId}/${addressId}`)
+   const response = await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/user/address/delete/${userId}/${addressId}`)
    return response.data;
 })
 

@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const sendContactMessage = createAsyncThunk("contact/sendMessage", async (formData, { rejectWithValue }) => {
    try {
-      const { data } = await axios.post(`${import.meta.env.BACKEND_URL}/contact/contact-form`, formData);
+      const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/contact/contact-form`, formData);
       return data;
    } catch (error) {
       return rejectWithValue(error.response?.data?.message || "Something went wrong");
@@ -12,7 +12,7 @@ export const sendContactMessage = createAsyncThunk("contact/sendMessage", async 
 
 export const fetchMessages = createAsyncThunk("contact/fetchMessages", async (_, { rejectWithValue }) => {
    try {
-      const { data } = await axios.get(`${import.meta.env.BACKEND_URL}/contact/messages`);
+      const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/contact/messages`);
       return data;
    } catch (error) {
       return rejectWithValue(error.response?.data?.message || "Failed to fetch messages");

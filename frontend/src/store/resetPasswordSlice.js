@@ -6,7 +6,7 @@ axios.defaults.withCredentials = true;
 export const resetPasswordRequest = createAsyncThunk('resetPassword/request',
    async ({ email }) => {
       try {
-         const response = await axios.post(`${import.meta.env.BACKEND_URL}/auth/reset-password-request`, { email })         
+         const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/reset-password-request`, { email })         
          return response.data;
       } catch (error) {
          console.error("Failed to reset password");
@@ -16,7 +16,7 @@ export const resetPasswordRequest = createAsyncThunk('resetPassword/request',
 export const resetPassword = createAsyncThunk('resetPassword',
    async ({ email, newPassword, confirmPassword, resetToken }, { rejectWithValue }) => {
       try {
-         const response = await axios.post(`${import.meta.env.BACKEND_URL}/auth/reset-password`, { email, newPassword, confirmPassword, resetToken }, {withCredentials: true})
+         const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/reset-password`, { email, newPassword, confirmPassword, resetToken }, {withCredentials: true})
          return response.data;
       } catch (error) {
          console.error("Failed to reset password");

@@ -4,7 +4,7 @@ import axios from "axios";
 export const requestOtp = createAsyncThunk('forgotPassword',
    async ({ email } , { rejectWithValue }) => {
       try {
-         const response = await axios.post(`${import.meta.env.BACKEND_URL}/auth/forgot-password`, { email, action: "sendOtp" });
+         const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/forgot-password`, { email, action: "sendOtp" });
          return response.data;
       } catch (error) {
          return rejectWithValue(error.response?.data?.message || "Failed to send OTP");
@@ -14,7 +14,7 @@ export const requestOtp = createAsyncThunk('forgotPassword',
 export const verifyOtp = createAsyncThunk('verifyOtp',
    async ({ email, otp }, { rejectWithValue }) => {
       try {
-         const response = await axios.post(`${import.meta.env.BACKEND_URL}/auth/verify-otp`, { email, otp });
+         const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/verify-otp`, { email, otp });
          return response.data;
       } catch (error) {
          return rejectWithValue(error.response?.data?.message || "Invalid OTP");

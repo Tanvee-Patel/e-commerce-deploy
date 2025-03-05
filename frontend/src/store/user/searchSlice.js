@@ -4,7 +4,7 @@ import axios from "axios";
 
 export const getSearchResults = createAsyncThunk('/getsearchresults', async (keyword) => {
    const response = await axios.get(
-      `${import.meta.env.BACKEND_URL}/user/search/${keyword}`,
+      `${import.meta.env.VITE_BACKEND_URL}/user/search/${keyword}`,
    );
    return response.data;
 })
