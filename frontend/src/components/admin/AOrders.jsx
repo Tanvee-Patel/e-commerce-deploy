@@ -71,7 +71,7 @@ const AOrders = () => {
                                           {orderItem?.orderStatus.replace(/_/g, " ")}
                                        </Badge>
                                     </TableCell>
-                                    <TableCell className="w-1/5 text-center">${orderItem?.totalAmount}</TableCell>
+                                    <TableCell className="w-1/5 text-center">${orderItem?.totalAmount?.toFixed(2)}</TableCell>
                                     <TableCell className="w-1/5 text-center">
                                        <Button
                                           className='border border-sky-600 rounded-xl'

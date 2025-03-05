@@ -3,6 +3,7 @@ const paypal = require('../../helpers/paypal')
 const Cart = require("../../models/cart")
 const Product = require("../../models/product")
 const util = require('util')
+const AdminNotifications = require('../../models/adminNotifications');
 
 const createOrder = async (req, res) => {
    try {
@@ -106,10 +107,16 @@ const createOrder = async (req, res) => {
                });
             }
 
+            const notification = new AdminNotifications({
+               userId: userId,
+               message: `New Order Alert! 🛒 Order #${newOrder._id} placed by User ID: ${newOrder.userId}`
+            })
+            await notification.save();
+
             const { io, onlineUsers } = require('../../index')
             const adminSocketId = onlineUsers.get('admin')
             if (adminSocketId) {
-               io.to(adminSocketId).emit("notification", `📢 New Order Alert! 🛒 Order #${newOrder._id} placed by User ID: ${newOrder.userId}`);
+               io.to(adminSocketId).emit("notification", notification);
             }
             else {
                console.log("Admin is offline");
@@ -121,7 +128,7 @@ const createOrder = async (req, res) => {
                success: true,
                message: 'Order created successfully',
                approvalURL,
-               orderId: newOrder._id,
+               orderId: newOrder._id,  
             });
          }
       })

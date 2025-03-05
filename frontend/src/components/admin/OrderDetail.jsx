@@ -76,7 +76,7 @@ const OrderDetail = ({ orderDetail }) => {
                   </div>
                   <div className='flex items-center justify-between'>
                      <p className='font-medium'>Order Price</p>
-                     <Label className="mr-5">${orderDetail?.totalAmount}</Label>
+                     <Label className="mr-5">${orderDetail?.totalAmount?.toFixed(2)}</Label>
                   </div>
                </div>
                <Separator />

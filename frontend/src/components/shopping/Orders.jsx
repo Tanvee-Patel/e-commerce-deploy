@@ -48,7 +48,7 @@ const Orders = () => {
         <CardTitle className="text-2xl font-semibold text-gray-800">Order History</CardTitle>
       </CardHeader>
       <CardContent>
-        <Table className="w-full text-gray-700 border border-gray-200 rounded-lg">
+        <Table className="w-full text-gray-700 border border-gray-200 rounded-xl">
           <TableHeader>
             <TableRow className="bg-gray-100 text-gray-900">
               <TableHead className="py-3 w-auto text-center">Order Id</TableHead>
@@ -72,11 +72,11 @@ const Orders = () => {
                         {orderItem?.orderStatus.replace(/_/g, " ")}
                       </Badge>
                     </TableCell>
-                    <TableCell className="py-3 px-4 text-center font-semibold">${orderItem?.totalAmount}</TableCell>
+                    <TableCell className="py-3 px-4 text-center font-semibold">${orderItem?.totalAmount?.toFixed(2)}</TableCell>
                     <TableCell className="py-3 px-4 text-center">
                       <Button
                         onClick={() => handleFetchOrderDetails(orderItem?._id)}
-                        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-xl transition">
+                        className="border border-sky-600 rounded-xl">
                         View Details
                       </Button>
                     </TableCell>

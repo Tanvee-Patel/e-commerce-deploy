@@ -67,7 +67,7 @@ const Checkout = () => {
       orderStatus: orderStatus,
       paymentId: '',
       paymentMethod,
-      paymentStatus: paymentMethod === 'cod' ? 'pending' : 'processing',
+      paymentStatus: paymentMethod === 'cod' ? 'pending' : 'paid',
       payerId: '',
       orderDate: new Date(),
       orderUpdateDate: new Date(),
@@ -111,7 +111,7 @@ const Checkout = () => {
 
         {/* Image */}
         <div className="relative h-[250px] w-full overflow-hidden rounded-xl shadow-md p-4 bg-white">
-          <img src={image} className="h-full w-full object-cover object-center" alt="Checkout Banner" />
+          <img src={image} className="h-full w-full object-cover rounded-xl object-center" alt="Checkout Banner" />
         </div>
 
         {/* Checkout Card */}
@@ -148,26 +148,32 @@ const Checkout = () => {
                   <div className="mt-6 space-y-4">
                     <div className="flex justify-between text-lg font-semibold">
                       <span>Total</span>
-                      <span className="text-gray-800">${totalCartAmount}</span>
+                      <span className="text-gray-800">${totalCartAmount?.toFixed(2)}</span>
                     </div>
                   </div>
 
                   {/* Payment Method Selection */}
-                  <div className="mt-4 flex flex-col gap-2">
+                  <div className="mt-4">
                     <h2 className="text-lg font-semibold">Select Payment Method</h2>
-                    <div className="flex items-center gap-4">
-                      <div className="mt-4 w-[30%] bg-green-500 text-white rounded-xl text-center hover:bg-green-600">
-                        <Button
-                          onClick={() => setPaymentMethod('paypal')}>
-                          With Paypal
-                        </Button>
-                      </div>
-                      <div className="mt-4 w-[30%] bg-blue-500 text-white rounded-xl text-center hover:bg-blue-600">
-                        <Button
-                          onClick={() => setPaymentMethod('cod')}>
-                          Cash on Delivery
-                        </Button>
-                      </div>
+                    <div className="flex gap-4 mt-2">
+                      <label className="flex items-center gap-2 cursor-pointer">
+                        <input
+                          type="radio"
+                          value="cod"
+                          checked={paymentMethod === 'cod'}
+                          onChange={(e) => setPaymentMethod(e.target.value)}
+                        />
+                        Cash on Delivery
+                      </label>
+                      <label className="flex items-center gap-2 cursor-pointer">
+                        <input
+                          type="radio"
+                          value="paypal"
+                          checked={paymentMethod === 'paypal'}
+                          onChange={(e) => setPaymentMethod(e.target.value)}
+                        />
+                        PayPal
+                      </label>
                     </div>
                   </div>
 

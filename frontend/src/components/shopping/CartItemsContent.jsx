@@ -99,7 +99,7 @@ const CartItemsContent = ({ cartItem }) => {
       </div>
       <div className="flex flex-col items-end whitespace-nowrap">
         <p className="text-lg font-semibold text-gray-900">
-          ${((cartItem?.salePrice > 0 ? cartItem.salePrice : cartItem?.price) * cartItem?.quantity).toFixed(2)}
+          ${((cartItem?.salePrice > 0 ? cartItem.salePrice.toFixed(2) : cartItem?.price) * cartItem?.quantity).toFixed(2)}
         </p>
         <Trash
           onClick={() => handleCartItemDelete(cartItem)}
