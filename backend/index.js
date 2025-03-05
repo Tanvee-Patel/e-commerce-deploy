@@ -23,7 +23,11 @@ const contactRouter = require('./routes/common/contactRoutes')
 const app = express()
 const PORT = process.env.PORT || 3000;
 
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI,
+                 useNewUrlParser: true,
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 40000,
+                )
    .then(() => console.log("MongoDB connected successfully!"))
    .catch((err) => console.error(err));
 
