@@ -8,6 +8,7 @@ import toast from 'react-hot-toast'
 import { Card, CardContent, CardTitle } from '@/components/ui/card'
 import { createOrder } from '@/store/user/orderSlice'
 import { fetchAllAddress, setSelectedAddress } from '@/store/user/addressSlice'
+import { deleteCartItem } from '@/store/user/cartSlice'
 
 const Checkout = () => {
   const dispatch = useDispatch();

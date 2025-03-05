@@ -115,6 +115,8 @@ const createOrder = async (req, res) => {
                console.log("Admin is offline");
             }
 
+            await Cart.findByIdAndDelete(cartId);
+
             res.status(201).json({
                success: true,
                message: 'Order created successfully',
@@ -222,6 +224,8 @@ const capturePayment = async (req, res) => {
          product.totalStock -= item.quantity;
          await product.save();
       }
+
+      await Cart.findByIdAndDelete(order.cartId);
 
       res.status(200).json({
          success: true,
