@@ -1,10 +1,11 @@
-const path = require('path')
+
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
 require('dotenv').config();
 
+const path = require('path')
 const http = require('http')
 const { Server } = require("socket.io")
 
