@@ -9,37 +9,8 @@ const Notification = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("Redux notifications state updated:", notifications);
-  }, [notifications]);  
-  
-  useEffect(() => {
-    if (user?.role === 'admin') {
-      socket.connect();
-      socket.emit("join", "admin");
-
-      // socket.on("notification", (notifications) => {
-      //   dispatch(fetchNotifications())
-      // })
-
-      socket.on("notification", (message) => {
-        console.log("📩 New Admin Notification:", message);
-        if (Array.isArray(message)) {
-          message.forEach(notification => {
-            dispatch(fetchNotifications())
-            // dispatch(addNotification(notification));
-          })
-        }
-        else {
-          dispatch(addNotification(message));
-        }
-      });
-
-      return () => {
-        socket.off("notification");
-        socket.disconnect();
-      };
-    }
-  }, [user, dispatch]);
+    dispatch(fetchNotifications())
+  }, [dispatch]);  
 
   return (
     <div className="bg-white p-5 rounded-xl shadow">

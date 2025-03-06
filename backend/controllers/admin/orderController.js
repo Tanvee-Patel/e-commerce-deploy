@@ -1,4 +1,5 @@
 const Order = require('../../models/order')
+const Notifications = require('../../models/notifications');
 
 const getAllOrderOfAllUsers = async (req, res) => {
    try {
@@ -71,25 +72,28 @@ const updateOrderStatus = async (req, res) => {
             message: 'Order not found'
          })
       }
-
+      const userId = order.userId._id;
       order.orderStatus = orderStatus;
       await order.save()
 
-      const { io, onlineUsers } = require("../../index")
-      const userId = order.userId._id.toString()
-      const message = `Your order #${id} status changed to ${orderStatus}`
+      const notification = new Notifications({
+         userId: userId,
+         message: `Your order #${id} status changed to ${orderStatus}`
+      })
+      await notification.save()
 
-      const userSocketId = onlineUsers.get(userId);
+      const { io, onlineUsers } = require("../../index")
+      const userSocketId = onlineUsers.get(userId.toString());
 
       if (userSocketId) {
          console.log(`📤 Sending notification to ${userSocketId}`);
-         io.to(userSocketId).emit("notification", message);
+         io.to(userSocketId).emit("notification", notification);
          io.emit("adminOrderUpdated", {
             orderId: id,
             status: orderStatus
          })
       } else {
-         console.log(`⚠️ User ${userId} is offline, cannot send notification.`);
+         console.log(`⚠️ User ${userId} is offline, can't send notification.`);
       }
 
       res.status(200).json({

@@ -50,7 +50,6 @@ const ProductDetails = ({ open, setOpen, productDetails }) => {
         }
       })
       .catch((error) => {
-        // toast.error("Error submitting review",error)
         toast.error(error);
       });
 

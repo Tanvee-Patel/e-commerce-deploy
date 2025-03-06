@@ -2,18 +2,17 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchNotifications = createAsyncThunk("notifications/fetch", async (_, { rejectWithValue }) => {
-   try {
-     const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/notifications`);
-     console.log("API Response:", response.data); 
-     return Array.isArray(response.data) ? response.data : [];
-   } catch (error) {
-     return rejectWithValue(error.response.data);
-   }
- });
+  try {
+    const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/admin/notifications/get`);
+    return Array.isArray(response.data) ? response.data : [];
+  } catch (error) {
+    return rejectWithValue(error.response.data);
+  }
+});
 
  export const markAsRead = createAsyncThunk("notifications/markAsRead", async (notificationId, { rejectWithValue }) => {
    try {
-     await axios.put(`${import.meta.env.VITE_BACKEND_URL}/notifications/${notificationId}/read`);
+     await axios.put(`${import.meta.env.VITE_BACKEND_URL}/admin/notifications/${notificationId}/read`);
      return notificationId;
    } catch (error) {
      return rejectWithValue(error.response.data);
@@ -22,7 +21,7 @@ export const fetchNotifications = createAsyncThunk("notifications/fetch", async 
 
  export const deleteNotification = createAsyncThunk("notifications/delete", async (notificationId, { rejectWithValue }) => {
    try {
-     await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/notifications/${notificationId}`);
+     await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/admin/notifications/${notificationId}`);
      return notificationId;
    } catch (error) {
      return rejectWithValue(error.response.data);

@@ -1,10 +1,10 @@
 const express = require('express');
-const AdminNotifications = require('../../models/adminNotifications');
+const Notifications = require('../../models/notifications');
 const router = express.Router();
 
 router.get("/get", async (req, res) => {
   try {
-    const notifications = await AdminNotifications.find().sort({ createdAt: -1 });
+    const notifications = await Notifications.find().sort({ createdAt: -1 });
     res.json(notifications);
   } catch (error) {
     res.status(500).json({ message: "Error fetching notifications" });
@@ -13,7 +13,7 @@ router.get("/get", async (req, res) => {
 
 router.put("/:id/read", async (req, res) => {
   try {
-    await AdminNotifications.findByIdAndUpdate(req.params.id, { isRead: true });
+    await Notifications.findByIdAndUpdate(req.params.id, { isRead: true });
     res.json({ message: "Notification marked as read" });
   } catch (error) {
     res.status(500).json({ message: "Error updating notification" });
@@ -22,7 +22,7 @@ router.put("/:id/read", async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
   try {
-    await AdminNotifications.findByIdAndDelete(req.params.id);
+    await Notifications.findByIdAndDelete(req.params.id);
     res.json({ message: "Notification deleted" });
   } catch (error) {
     res.status(500).json({ message: "Error deleting notification" });

@@ -21,11 +21,6 @@ export const updateOrderStatus = createAsyncThunk(
    '/order/updateOrderStatus', async ({ id, orderStatus }) => {
       const response = await axios.put(
          `${import.meta.env.VITE_BACKEND_URL}/admin/order/update/${id}`, { orderStatus });
-      if (response.data.success) {
-         if (orderStatus.toLowerCase() === "confirmed") {
-            toast.success("Confirmation email sent to the customer!");
-         }
-      }
       return response.data;
    })
 
