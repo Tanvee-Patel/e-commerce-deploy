@@ -2,14 +2,18 @@ import React from 'react'
 import { Button } from '../ui/button'
 import { AlignJustify, BellRing, LogOut } from 'lucide-react'
 import { useDispatch } from 'react-redux'
-import { logoutUser } from '@/store/authSlice'
-import { Link } from 'react-router-dom'
+import { logoutUser, resetTokenAndCredentials } from '@/store/authSlice'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Header = ({ setOpen }) => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   function handleLogout() {
-    dispatch(logoutUser())
+    // dispatch(logoutUser())
+    dispatch(resetTokenAndCredentials())
+    sessionStorage.clear()
+    navigate('/auth/login')
   }
 
   return (

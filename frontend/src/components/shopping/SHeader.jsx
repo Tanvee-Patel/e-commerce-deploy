@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { shoppingViewHeaderMenuItems } from '@/config'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '../ui/dropdown-menu'
 import { Avatar, AvatarFallback } from '../ui/avatar'
-import { logoutUser } from '@/store/authSlice'
+import { logoutUser, resetTokenAndCredentials } from '@/store/authSlice'
 import CartWrapper from './CartWrapper'
 import { fetchCartItems } from '@/store/user/cartSlice'
 import { Label } from '../ui/label'
@@ -58,7 +58,10 @@ function HeaderRightContent({ closeMenu }) {
   const unreadNotifications = 0;
 
   function handleLogout() {
-    dispatch(logoutUser());
+    // dispatch(logoutUser());
+    dispatch(resetTokenAndCredentials())
+    sessionStorage.clear()
+    navigate('/auth/login')
     closeMenu();
   }
 

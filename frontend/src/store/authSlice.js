@@ -6,6 +6,7 @@ const initialState = {
   isLoading: false,
   user: null,
   error: null,
+  token: null
 };
 
 export const registerUser = createAsyncThunk(
@@ -54,10 +55,13 @@ export const logoutUser = createAsyncThunk(
 
 export const checkAuth = createAsyncThunk(
   '/auth/checkAuth',
-  async (_, { rejectWithValue }) => {
+  async (token, { rejectWithValue }) => {
     try {
       const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/auth/check-auth`, {
-        withCredentials: true, 
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Cache-Control": "no-cache",
+        } 
       });
       return response.data;
     } catch (error) {
@@ -71,6 +75,11 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
+    resetTokenAndCredentials: (state) => {
+      state.isAuthenticated = false
+      state.user = null
+      state.token = null
+    },
     resetAuthState: (state) => {
       state.isAuthenticated = false;
       state.user = null;
@@ -100,10 +109,13 @@ const authSlice = createSlice({
         state.user = action.payload.user;  
         state.isAuthenticated = true;
         state.error = null;
+        state.token = action.payload.token;
+        sessionStorage.setItem('token', JSON.stringify(action.payload.token));
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload?.message || 'Login failed';
+        state.token = null
       })
       .addCase(checkAuth.pending, (state) => {
         state.isLoading = true;
@@ -141,5 +153,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { resetAuthState } = authSlice.actions;
+export const { resetAuthState, resetTokenAndCredentials } = authSlice.actions;
 export default authSlice.reducer;
