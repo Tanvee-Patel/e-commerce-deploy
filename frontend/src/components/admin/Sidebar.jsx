@@ -1,4 +1,4 @@
-import { BellRing, LayoutDashboard, MessageSquareText, Package, ShoppingCart } from "lucide-react";
+import { LayoutDashboard, MessageSquareText, Package, ShoppingCart } from "lucide-react";
 
 import { SquareUserRound } from 'lucide-react'
 import React, { Fragment } from 'react'
@@ -67,12 +67,6 @@ export const adminSidebarMenuItems = [
     path: '/admin/messages',
     icon: <MessageSquareText />
   },
-  {
-    id: 'notifications',
-    label: 'Notifications',
-    path: '/admin/notifications',
-    icon: <BellRing />
-  }
 ]
 
 const MenuItems = ({ setOpen }) => {
