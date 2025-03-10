@@ -2,9 +2,10 @@ const express = require('express');
 const Notifications = require('../../models/notifications');
 const router = express.Router();
 
-router.get("/get", async (req, res) => {
+router.get("/get/:userId", async (req, res) => {
   try {
-    const notifications = await Notifications.find().sort({ createdAt: -1 });
+    const { userId } = req.params;
+    const notifications = await Notifications.find({ userId }).sort({ createdAt: -1 });
     res.json(notifications);
   } catch (error) {
     res.status(500).json({ message: "Error fetching notifications" });

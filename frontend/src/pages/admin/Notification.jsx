@@ -13,11 +13,11 @@ const Notification = () => {
   }, [dispatch]);  
 
   return (
-    <div className="bg-white p-5 rounded-xl shadow">
+    <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white p-5 rounded-xl shadow">
       <div className="w-full max-w-lg space-y-8">
         <h2 className="text-xl font-bold mb-4">Notifications</h2>
       </div>
-      <div className="bg-white rounded-xl">
+      <div className="rounded-xl">
         <ul className="divide-y divide-gray-300 space-y-4">
           {notifications.length > 0 ? (
             notifications.map((notif) => (

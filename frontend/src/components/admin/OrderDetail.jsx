@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react'
 import { DialogContent, DialogTitle } from '../ui/dialog'
 import { Label } from '../ui/label'
@@ -53,10 +52,10 @@ const OrderDetail = ({ orderDetail }) => {
    }
    
    return (
-      <DialogContent className="bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center ring-4">
-         <div className="w-full max-w-lg rounded-xl p-8 space-y-6 ">
+      <DialogContent className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white flex items-center justify-center overflow-y-auto">
+         <div className="w-full rounded-xl p-4 space-y-6 max-h-[80vh]">
             <div className="text-center">
-               <DialogTitle className="text-3xl font-extrabold text-gray-900 tracking-tight mb-4">
+               <DialogTitle className="text-3xl font-extrabold text-white tracking-tight mb-4">
                   Order Details
                </DialogTitle>
             </div>
@@ -64,40 +63,57 @@ const OrderDetail = ({ orderDetail }) => {
                <div className='grid gap-2'>
                   <div className='flex items-center justify-between'>
                      <p className='font-medium'>Order Id</p>
-                     <Label className="mr-5">{orderDetail?._id}</Label>
+                     <Label className="mr-5 text-base">{orderDetail?._id}</Label>
                   </div>
                   <div className='flex items-center justify-between'>
                      <p className='font-medium'>Order Date</p>
-                     <Label className="mr-5">{orderDetail?.orderDate.split('T')[0]}</Label>
+                     <Label className="mr-5 text-base">{orderDetail?.orderDate.split('T')[0]}</Label>
                   </div>
                   <div className='flex items-center justify-between'>
                      <p className='font-medium'>Order Status</p>
-                     <Label className="mr-5"><Badge className='py-1 px-2'>{orderDetail?.orderStatus}</Badge></Label>
+                     <Label className="mr-5"><Badge className='text-base py-1 px-2'>{orderDetail?.orderStatus}</Badge></Label>
                   </div>
                   <div className='flex items-center justify-between'>
                      <p className='font-medium'>Order Price</p>
-                     <Label className="mr-5">${orderDetail?.totalAmount?.toFixed(2)}</Label>
+                     <Label className="mr-5 text-base">${orderDetail?.totalAmount?.toFixed(2)}</Label>
+                  </div>
+                  <div className='flex items-center justify-between'>
+                     <p className='font-medium'>Payment Status</p>
+                     <Label className="mr-5 text-base">
+                        <Badge className='py-1 px-2 text-base'> {orderDetail?.paymentStatus} </Badge>
+                     </Label>
+                  </div>
+                  <div className='flex items-center justify-between'>
+                     <p className='font-medium'>Payment Method</p>
+                     <Label className="mr-5 text-base">{orderDetail?.paymentMethod}</Label>
                   </div>
                </div>
                <Separator />
                <div className='grid gap-4'>
                   <div className='grid gap-2'>
                      <div className='font-extrabold'>
-                        Order Details
+                        Ordered Items
                      </div>
                      <ul className='grid gap-3'>
                         <li className='flex items-center justify-between font-semibold border-b pb-2'>
-                           <span className='w-1/2'>Product Name</span>
+                           <span className='w-1/4'>Product Name</span>
                            <span className='w-1/4 text-center'>Quantity</span>
                            <span className='w-1/4 text-right'>Price</span>
+                           <span className='w-1/4 text-right'>Sale Price</span>
                         </li>
                         {
                            orderDetail?.cartItems && orderDetail.cartItems.length > 0 ?
                               orderDetail?.cartItems.map(item =>
                                  <li key={item?._id} className='flex items-center justify-between'>
-                                    <span className='w-1/2'>{item.title}</span>
+                                    <span className='w-1/4'>{item.title}</span>
                                     <span className='w-1/4 text-center'>{item.quantity}</span>
-                                    <span className='w-1/4 text-right'>${item.price}</span>
+                                    <span className='w-1/4 text-right'>
+                                    {
+                                       item?.salePrice > 0 ? (
+                                          <span className="line-through text-red-500">{item.price}</span>
+                                       ) : (item?.price)
+                                    }</span>
+                                    <span className="w-1/4 text-right">$ {item.salePrice}</span>
                                  </li>) : null
                         }
 
@@ -119,7 +135,7 @@ const OrderDetail = ({ orderDetail }) => {
                      </div>
                   </div>
                </div>
-               <div>
+               <div className='mb-7'>
                   <Form
                      formControlls={[
                         {

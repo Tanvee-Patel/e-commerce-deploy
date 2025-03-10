@@ -109,7 +109,7 @@ const Listing = () => {
   },[productDetails])
 
   return (
-    <div className='min-h-screen bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-100 flex items-center justify-center p-6'>
+    <div className='min-h-screen flex items-center justify-center p-6'>
       <div className='w-full max-w-7xl flex flex-col md:flex-row gap-8'>
       
         <div className='bg-white p-6 rounded-xl shadow-xl w-full md:w-1/4'>
@@ -164,7 +164,6 @@ const Listing = () => {
         </div>
       </div>
 
-      {/* Product Details Dialog */}
       <ProductDetails open={openDetailsDialog} setOpen={setOpenDetailsDialog} productDetails={productDetails} />
     </div>
   )

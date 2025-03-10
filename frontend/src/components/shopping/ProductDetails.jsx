@@ -91,8 +91,8 @@ const ProductDetails = ({ open, setOpen, productDetails }) => {
 
   return (
     <Dialog open={open} onOpenChange={handleCloseDialog}>
-      <DialogContent className="sm:p-8 p-6 max-w-[90vw] sm:max-w-[80vw] lg:max-w-[70vw] rounded-xl shadow-xl bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 overflow-y-auto max-h-[80vh]">
-        <DialogTitle className="text-3xl font-extrabold text-gray-900 mb-6 text-center">{productDetails?.title || "Loading..."}</DialogTitle>
+      <DialogContent className="sm:p-8 p-6 max-w-[90vw] sm:max-w-[80vw] lg:max-w-[70vw] rounded-xl shadow-xl bg-gradient-to-br from-gray-900 via-gray-800 to-black overflow-y-auto max-h-[80vh]">
+        <DialogTitle className="text-3xl font-extrabold text-white mb-6 text-center">{productDetails?.title || "Loading..."}</DialogTitle>
         {productDetails ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
             <img
@@ -100,20 +100,19 @@ const ProductDetails = ({ open, setOpen, productDetails }) => {
               alt={productDetails.title}
               width={600}
               height={600}
-              className="aspect-square w-full object-cover rounded-xl"
+              className="w-full object-fill rounded-xl"
             />
             <div className="space-y-6">
-              {/* <h1 className="text-3xl font-bold text-gray-900">{productDetails.title}</h1> */}
-              <p className="text-lg text-gray-600 leading-relaxed">{productDetails.description}</p>
+              <p className="text-lg text-white/80 leading-relaxed">{productDetails.description}</p>
 
               <div className="flex items-center justify-between">
                 <p 
-                className={`text-3xl font-bold text-primary ${productDetails?.salePrice > 0 ? 
+                className={`text-2xl font-bold text-primary text-red-500 ${productDetails?.salePrice > 0 ? 
                   "line-through" : "" }`} >
                   ${productDetails?.price}
                 </p>
                 {productDetails?.salePrice > 0 ? (
-                  <p className="text-2xl font-bold text-muted-foreground">
+                  <p className="text-2xl font-bold text-muted-foreground text-white">
                     ${productDetails?.salePrice}
                   </p>
                 ) : null}
@@ -122,10 +121,11 @@ const ProductDetails = ({ open, setOpen, productDetails }) => {
               <div className='flex items-center gap-2 mt-2'>
                 <div className='flex items-center gap-0.5'>
                   <StarRating
+                  className="text-white"
                     rating={avgReview}
                   />
                 </div>
-                <span className='text-muted-foreground font-medium'>({avgReview.toFixed(1)})</span>
+                <span className='text-sky-400 font-medium'>({avgReview.toFixed(1)})</span>
               </div>
 
               {
@@ -135,7 +135,7 @@ const ProductDetails = ({ open, setOpen, productDetails }) => {
                   </Button>
                   : <Button
                     onClick={() => handleAddToCart(productDetails?._id, productDetails?.totalStock)}
-                    className="w-full bg-primary-500 text-cyan-700 hover:bg-primary-600 hover:bg-slate-200 transition-all mt-4">
+                    className="max-w-auto rounded-xl bg-primary-500 text-white bg-slate-400 hover:bg-primary-600 hover:bg-slate-600 transition-all mt-4">
                     Add to Cart
                   </Button>
               }
@@ -143,37 +143,37 @@ const ProductDetails = ({ open, setOpen, productDetails }) => {
               <Separator />
 
               <div className='max-h-[300px] overflow-auto'>
-                <h2 className='text-xl font-bold mb-4'>Reviews</h2>
+                <h2 className='text-xl font-bold mb-4 text-white'>Reviews</h2>
                 <div className='grid gap-6'>
                   {
                     reviews && reviews.length > 0 ? (
                       reviews.map(reviewItem => (
                         <div className="flex gap-4" key={reviewItem?._id}>
-                          <Avatar className="w-10 h-10 border">
-                            <AvatarFallback>
+                          <Avatar className="w-10 h-10 border bg-white">
+                            <AvatarFallback className="font-extrabold">
                               {reviewItem?.userId?.username?.[0]?.toUpperCase() || "U"}
                             </AvatarFallback>
                           </Avatar>
                           <div className="grid gap-1">
                             <div className="flex items-center gap-2">
-                              <h3 className="font-bold">{reviewItem?.userId?.username || "Anonymous"}</h3>
+                              <h3 className="font-bold text-white">{reviewItem?.userId?.username || "Anonymous"}</h3>
                             </div>
                             <div className="flex items-center gap-0.5">
                               <StarRating rating={reviewItem?.reviewValue} />
                             </div>
-                            <p className="text-muted-foreground">
+                            <p className="text-muted-foreground text-white">
                               {reviewItem?.ReviewMessage || "No comment provided"}
                             </p>
                           </div>
                         </div>
                       ))
                     ) : (
-                      <h1>No Reviews</h1>
+                      <h1 className='text-white'>No Reviews</h1>
                     )
                   }
                 </div>
 
-                <div className='mt-10 flex-col flex gap-2'>
+                <div className='mt-10 flex-col flex gap-2 text-white'>
                   <Label>Write a review</Label>
                   <div className='flex gap-1'>
                     <StarRating
@@ -187,12 +187,14 @@ const ProductDetails = ({ open, setOpen, productDetails }) => {
                     onChange={(e) => setReviewMsg(e.target.value)}
                     placeholder="Write a Review"
                     className="w-full p-4 border rounded-xl  " />
+                  <div className='flex justify-center'>
                   <Button
                     onClick={handleAddReview}
                     disabled={reviewMsg.trim() === ""}
-                    className="p-4 hover:bg-slate-200">
+                    className="p-5 bg-cyan-700 hover:bg-cyan-900 rounded-xl">
                     Submit
                   </Button>
+                  </div>
                 </div>
               </div>
             </div>

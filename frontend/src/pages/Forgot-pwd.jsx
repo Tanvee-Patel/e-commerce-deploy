@@ -38,13 +38,13 @@ function ForgotPassword() {
    }
 
    return (
-      <div className=" bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center p-7 rounded-xl">
+      <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-black flex items-center justify-center p-60 rounded-xl">
       <div className="w-full h-full max-w-lg">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-gray-900 tracking-tight mb-4 decoration-primary-300 decoration-3 underline-offset-4">
+          <h1 className="text-3xl font-bold text-white tracking-tight mb-4 decoration-primary-300 decoration-3 underline-offset-4">
             Forgot Password?
           </h1>
-          <p className="text-xl text-gray-700 mb-2 mt-7">
+          <p className="text-xl text-white mb-2 mt-7">
             Enter your email to receive a One-Time Password (OTP) to reset your password.
           </p>
         </div>
@@ -52,9 +52,6 @@ function ForgotPassword() {
         <div className="rounded-xl shadow-sm p-10 space-y-2">
           <form onSubmit={handleForgotPassword} className="space-y-6 p-6">
             <div>
-              {/* <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">
-                Email Address
-              </label> */}
               <input
                 type="email"
                 id="email"
@@ -64,6 +61,7 @@ function ForgotPassword() {
                 className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-primary-500 focus:outline-none shadow-sm"
               />
             </div>
+            <div className='flex justify-center'>
             <button
               type="submit"
               className={`max-w-full p-8 bg-blue-400 hover:bg-blue-500 py-3 rounded-xl font-semibold ${
@@ -73,11 +71,12 @@ function ForgotPassword() {
             >
               {isLoading ? 'Sending OTP...' : 'Send OTP'}
             </button>
+            </div>
           </form>
         </div>
 
         <div className="text-center mt-6">
-          <p className="text-base text-gray-700">
+          <p className="text-base text-white">
             Remembered your password?{' '}
             <Link to="/auth/login" className="text-primary-500 hover:underline font-semibold">
               Login here

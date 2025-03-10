@@ -40,18 +40,17 @@ function VerifyOtp() {
   };
 
   return (
-    <div className="flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-7 rounded-xl">
+    <div className="flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-black p-60 rounded-xl">
       <div className="w-full h-full max-w-lg p-11">
         <div className='text-center'>
-          <h1 className="text-3xl font-bold text-gray-900 tracking-tight mb-4 decoration-primary-300 decoration-3 underline-offset-4">Verify OTP</h1>
-          <p className="text-xl text-gray-700 mb-6">
+          <h1 className="text-3xl font-bold text-white tracking-tight mb-4 decoration-primary-300 decoration-3 underline-offset-4">Verify OTP</h1>
+          <p className="text-xl text-white mb-6">
             Enter the One-Time Password (OTP) sent to your email address to verify your identity.
           </p>
           <form
             onSubmit={handleVerifyOtp}
             className="space-y-6 p-8 rounded-xl">
             <div>
-              {/* <label className="block text-gray-700 font-semibold mb-2" htmlFor="otp">OTP</label> */}
               <input
                 type="text"
                 id="otp"
@@ -71,7 +70,7 @@ function VerifyOtp() {
             </button>
           </form>
           <div className="mt-6 text-center">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-white">
               Didn’t receive an OTP?{' '}
               <a href="/auth/forgot-password" className="text-blue-500 hover:underline font-medium">
                 Resend OTP

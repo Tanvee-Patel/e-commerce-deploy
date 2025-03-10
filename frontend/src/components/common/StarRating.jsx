@@ -8,7 +8,7 @@ const StarRating = ({ rating, handleRatingChange }) => {
          {[1, 2, 3, 4, 5].map((star) => (
             <Button
                key={star}
-               className={`p-2 transition-colors ${star <= rating ? 'text-yellow-400 ' : 'text-black hover:bg-primary hover:text-primary-foreground'}`}
+               className={`p-2 transition-colors ${star <= rating ? 'text-yellow-400 ' : 'text-white hover:bg-primary hover:text-primary-foreground'}`}
                variant="outline"
                size="icon"
                onClick={() => handleRatingChange(star)}>

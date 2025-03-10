@@ -20,40 +20,36 @@ const Contact = () => {
    };
 
    return (
-      <div className="min-h-screen bg-gradient-to-r from-blue-100 via-indigo-100 to-purple-100 flex items-center justify-center p-6">
-         <div className="max-w-5xl w-full bg-white shadow-lg rounded-xl p-8 space-y-8">
-            {/* Heading */}
-            <h2 className="text-4xl font-bold text-gray-900 text-center">Contact Us</h2>
-            <p className="text-center text-gray-600">We'd love to hear from you! Reach out to us with any questions.</p>
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black flex items-center justify-center">
+         <div className="max-w-5xl w-full shadow-lg rounded-xl p-8 space-y-8">
+            <h2 className="text-4xl font-bold text-white text-center">Contact Us</h2>
+            <p className="text-center text-white/70 pb-4">We'd love to hear from you! Reach out to us with any questions.</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-               {/* Contact Info */}
                <div className="space-y-6">
                   <div className="flex items-center space-x-4">
                      <FaMapMarkerAlt className="text-blue-600 text-2xl" />
-                     <p className="text-gray-700">Surat, Gujarat, India</p>
+                     <p className="text-white">Surat, Gujarat, India</p>
                   </div>
                   <div className="flex items-center space-x-4">
                      <FaEnvelope className="text-red-500 text-2xl" />
-                     <p className="text-blue-600 text-sm pb-2">
+                     <p className="text-white hover:text-blue-500 text-sm pb-2">
                         <a href="mailto:vedanship517@email.com" className="hover:underline">E-mail</a>
                      </p>
                   </div>
                   <div className="flex items-center space-x-4">
                      <FaPhone className="text-green-500 text-2xl" />
-                     <p className="text-gray-700">+91 77788 57425</p>
+                     <p className="text-white">+91 77788 57425</p>
                   </div>
 
-                  {/* Social Media */}
                   <div className="flex space-x-4">
                      <Link to="#" className="text-blue-600 text-2xl hover:text-blue-800"><FaFacebook /></Link>
                      <Link to="https://x.com/Tanvee_17" className="text-blue-400 text-2xl hover:text-blue-600"><FaTwitter /></Link>
                      <Link to="#" className="text-pink-500 text-2xl hover:text-pink-700"><FaInstagram /></Link>
-                     <Link to="https://in.pinterest.com/tanveedpatel8577/" className="text-red-600 text-2xl hover:text-red-800"><FaPinterest /></Link>
+                     {/* <Link to="https://in.pinterest.com/tanveedpatel8577/" className="text-red-600 text-2xl hover:text-red-800"><FaPinterest /></Link> */}
                   </div>
                </div>
 
-               {/* Contact Form */}
                <div className="bg-gray-100 p-6 rounded-xl">
                   <form onSubmit={handleSubmit} className="space-y-4">
                      <div>

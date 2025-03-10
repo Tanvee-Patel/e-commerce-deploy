@@ -16,10 +16,10 @@ const OrderDetails = ({ orderDetails }) => {
    }
 
    return (
-      <DialogContent className="bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center ring-4">
-         <div className="w-full max-w-lg rounded-xl p-8 space-y-6 ">
+      <DialogContent className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white flex items-center justify-center h-[90vh] overflow-y-auto">
+         <div className="w-full rounded-xl p-4 space-y-6 max-h-[80vh]">
             <div className="text-center">
-               <DialogTitle className="text-3xl font-extrabold text-gray-900 tracking-tight mb-4">
+               <DialogTitle className="text-3xl font-extrabold text-white tracking-tight">
                   Order Details
                </DialogTitle>
             </div>
@@ -47,7 +47,7 @@ const OrderDetails = ({ orderDetails }) => {
                   </div>
                   <div className='flex items-center justify-between'>
                      <p className='font-medium'>Payment Status</p>
-                     <Label className="mr-5"><Badge className='py-1 px-2 text-base'>{orderDetails?.paymentStatus}</Badge></Label>
+                     <Label className="mr-5 text-base"><Badge className='py-1 px-2 text-base'>{orderDetails?.paymentStatus}</Badge></Label>
                   </div>
                   <div className='flex items-center justify-between'>
                      <p className='font-medium'>Payment Method</p>
@@ -58,7 +58,7 @@ const OrderDetails = ({ orderDetails }) => {
                <Separator />
                <div className='grid gap-4'>
                   <div className='grid gap-2'>
-                     <div className='font-extrabold'>
+                     <div className='font-bold text-xl'>
                         Ordered Items
                      </div>
                      <ul className='grid gap-3'>
@@ -76,7 +76,7 @@ const OrderDetails = ({ orderDetails }) => {
                                     <span className='w-1/4 text-center'>{item.quantity}</span>
                                     <span className='w-1/4 text-right'>  
                                     {item?.salePrice > 0 ? (
-                                       <span className="line-through text-red-600">{item?.price}</span>
+                                       <span className="line-through text-red-500">{item?.price}</span>
                                     ) : ( item?.price )}</span>
                                     <span className='w-1/4 text-right'>$ {item?.salePrice} </span>
                                  </li>) : null
@@ -87,7 +87,7 @@ const OrderDetails = ({ orderDetails }) => {
                <Separator />
                <div className='grid gap-4'>
                   <div className='grid gap-2'>
-                     <div className='font-medium'>
+                     <div className='text-xl font-medium'>
                         Shipping Info
                      </div>
                      <div className='grid gap-0.5 text-muted-foreground'>
@@ -95,7 +95,7 @@ const OrderDetails = ({ orderDetails }) => {
                         <span>Address: {orderDetails?.addressInfo?.address}
                            <span>, {orderDetails?.addressInfo?.city || 'N/A'}</span> </span>
                         <span>Pincode: {orderDetails?.addressInfo?.pincode || 'N/A'}</span>
-                        <span>Phone: {orderDetails?.addressInfo?.phone || 'N/A'}</span>
+                        <span className='mb-7'>Phone: {orderDetails?.addressInfo?.phone || 'N/A'}</span>
                      </div>
                   </div>
                </div>

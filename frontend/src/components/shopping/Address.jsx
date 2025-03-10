@@ -132,7 +132,7 @@ const Address = ({ currentSelectedAddress, setCurrentSelectedAddress, selectedId
                         }
                      </CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-3">
+                  <CardContent className="space-y-3 text-blue-950">
                      <Form
                         formControlls={addressFormControls}
                         formData={formData}

@@ -20,12 +20,12 @@ const PaypalReturn = () => {
    }, []);
 
   return (
-    <Card>
+    <Card className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white h-[70vh]">  
       <CardHeader>
-        <CardTitle>{message}</CardTitle>
+        <CardTitle className="text-4xl">{message}</CardTitle>
       </CardHeader>
       <CardContent>
-       { loading ? <Loader2/> :  <p>Thank you for your purchase!</p>}
+       { loading ? <Loader2/> :  <p className="text-xl">Thank you for your purchase!</p>}
       </CardContent>
     </Card>
   );

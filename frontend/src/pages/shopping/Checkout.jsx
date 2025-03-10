@@ -99,27 +99,23 @@ const Checkout = () => {
   }, [approvalURL, paymentMethod, isPaymentStart]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center px-6">
+    <div className="min-h-screen flex items-center justify-center px-6">
       <div className="w-full space-y-8 mb-7">
 
-        {/* Title */}
         <div className="text-center">
-          <h1 className="text-5xl font-extrabold text-gray-900 tracking-tight mt-4 mb-4">
+          <h1 className="text-5xl font-extrabold text-white tracking-tight mt-4 mb-4">
             Checkout
           </h1>
         </div>
 
-        {/* Image */}
         <div className="relative h-[250px] w-full overflow-hidden rounded-xl shadow-md p-4 bg-white">
           <img src={image} className="h-full w-full object-cover rounded-xl object-center" alt="Checkout Banner" />
         </div>
 
-        {/* Checkout Card */}
         <Card className="bg-white rounded-xl shadow-2xl p-7 space-y-6 ">
           <CardContent className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-              {/* Address Section */}
               <div className="bg-white p-6 rounded-xl">
                 <Address
                   selectedId={selectedAddress?._id}
@@ -128,12 +124,10 @@ const Checkout = () => {
                 />
               </div>
 
-              {/* Cart Items Section */}
               <div className="bg-white p-5 rounded-xl">
-                <div className="flex flex-col gap-4 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 p-6 rounded-xl mt-10">
-                  {/* Title */}
-                  <CardTitle className="text-2xl font-semibold text-gray-900 text-center">
-                    <h1 className="text-3xl font-bold text-gray-900 tracking-tight mb-4">Cart Items</h1>
+                <div className="flex flex-col gap-4 bg-gradient-to-br from-gray-900 via-gray-800 to-black p-6 rounded-xl mt-10">
+                  <CardTitle className="text-2xl font-semibold text-white text-center">
+                    <h1 className="text-3xl font-bold tracking-tight mb-4">Cart Items</h1>
                   </CardTitle>
 
                   {cartItems && cartItems.items && cartItems.items.length > 0 ? (
@@ -141,19 +135,17 @@ const Checkout = () => {
                       <CartItemsContent key={cartItem._id || index} cartItem={cartItem} />
                     ))
                   ) : (
-                    <p className="text-gray-600 text-center">Your cart is empty.</p>
+                    <p className="text-white text-center">Your cart is empty.</p>
                   )}
 
-                  {/* Total Amount */}
                   <div className="mt-6 space-y-4">
-                    <div className="flex justify-between text-lg font-semibold">
+                    <div className="flex justify-between text-lg text-white font-semibold">
                       <span>Total</span>
-                      <span className="text-gray-800">${totalCartAmount?.toFixed(2)}</span>
+                      <span>${totalCartAmount?.toFixed(2)}</span>
                     </div>
                   </div>
 
-                  {/* Payment Method Selection */}
-                  <div className="mt-4">
+                  <div className="mt-4 text-white">
                     <h2 className="text-lg font-semibold">Select Payment Method</h2>
                     <div className="flex gap-4 mt-2">
                       <label className="flex items-center gap-2 cursor-pointer">
@@ -163,7 +155,7 @@ const Checkout = () => {
                           checked={paymentMethod === 'cod'}
                           onChange={(e) => setPaymentMethod(e.target.value)}
                         />
-                        Cash on Delivery
+                        Cash on Delivery 
                       </label>
                       <label className="flex items-center gap-2 cursor-pointer">
                         <input
@@ -177,7 +169,6 @@ const Checkout = () => {
                     </div>
                   </div>
 
-                  {/* Place Order Button */}
                   <div className="mt-4 w-[30%] bg-gray-500 text-white rounded-xl text-center hover:bg-gray-600">
                     <Button
                       onClick={handleCheckout}>

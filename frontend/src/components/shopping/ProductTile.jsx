@@ -17,6 +17,7 @@ const getBrandLabel = (brandId) => {
 const ProductTile = ({ product, handleGetProductDetails, handleAddToCart }) => {
    const categoryLabel = getCategoryLabel(product.category)
    const brandLabel = getBrandLabel(product.brand)
+   // console.log("price",product?.salePrice)
 
    return (
       <Card className="w-full max-w-sm mx-auto bg-white shadow-lg rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300">
@@ -46,20 +47,21 @@ const ProductTile = ({ product, handleGetProductDetails, handleAddToCart }) => {
             </div>
             <CardContent className="p-4">
                <h2 className='text-xl font-semibold text-gray-900 mb-2'>
-                  {product?.title?.length > 27 ? `${product.title.slice(0,27)}...` : product?.title}
+                  {product?.title?.length > 27 ? `${product.title.slice(0, 27)}...` : product?.title}
                </h2>
                <div className='flex justify-between items-center mb-2'>
                   <span className='text-sm text-gray-600'>{categoryLabel}</span>
                   <span className='text-sm text-gray-600'>{brandLabel}</span>
                </div>
-               <div className='flex justify-between items-center'>
+               <div className='flex justify-between items-center text-black'>
                   <span className={` ${product.salePrice > 0 ? 'line-through text-gray-500' : "text-primary-600"} text-lg font-semibold`}>
                      ${product?.price}
                   </span>
+
                   {
-                     product?.salePrice > 0 ?
-                        <span className='text-lg font-semibold text-primary-600'>${product?.salePrice}</span>
-                        : null
+                     product?.salePrice && product?.salePrice > 0 ? (
+                        <span className='text-lg text-black font-semibold text-primary-600'>${product?.salePrice}</span>
+                     ) : null
                   }
                </div>
             </CardContent>

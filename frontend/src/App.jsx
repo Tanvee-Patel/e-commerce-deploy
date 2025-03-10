@@ -27,7 +27,7 @@ import Contact from './pages/shopping/Contact';
 import Messages from './pages/admin/Messages';
 import Notifications from './pages/shopping/Notifications';
 import PaypalReturn from './pages/shopping/PaypalReturn';
-import Notification from './pages/admin/Notification' 
+import Notification from './pages/admin/Notification'
 
 function App() {
   const { isAuthenticated, user, isLoading } = useSelector((state) => state.auth);
@@ -44,7 +44,6 @@ function App() {
     <div className="flex flex-col bg-white">
       <Toaster position="bottom-right" reverseOrder={false} />
       <Routes>
-        {/* Public Routes */}
         <Route
           path='/'
           element={
@@ -53,26 +52,25 @@ function App() {
               user={user}>
             </CheckAuth>}
         />
+        <Route path="/auth/forgot-password" element={<ForgotPassword />} />
+        <Route path="/auth/reset-password/:resetToken" element={<ResetPassword />} />
+        <Route path="/auth/verify-otp/:email" element={<VerifyOtp />} />
+
         <Route path="/auth" element={<Layout />}>
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
-          <Route path="forgot-password" element={<ForgotPassword />} />
-          <Route path="reset-password/:resetToken" element={<ResetPassword />} />
-          <Route path="verify-otp/:email" element={<VerifyOtp />} />
         </Route>
 
-        {/* Protected Routes - Admin */}
         <Route path="/admin" element={<CheckAuth isAuthenticated={isAuthenticated} user={user}><Layouts /></CheckAuth>}>
           <Route path="dashboard" element={<Adashboard />} />
           <Route path="features" element={<Afeatures />} />
           <Route path="orders" element={<Aorders />} />
           <Route path="products" element={<Aproducts />} />
           <Route path='messages' element={<Messages />} />
-          <Route path='notifications' element={<Notification/>} />
+          <Route path='notifications' element={<Notification />} />
 
         </Route>
 
-        {/* Protected Routes - User */}
         <Route path="/user" element={<CheckAuth isAuthenticated={isAuthenticated} user={user}><Slayout /></CheckAuth>}>
           <Route path="home" element={<Home />} />
           <Route path="listing" element={<Listing />} />
@@ -81,9 +79,8 @@ function App() {
           <Route path="search" element={<Search />} />
           <Route path="about" element={<AboutUs />} />
           <Route path="contact" element={<Contact />} />
-          <Route path="notifications" element={<Notifications/>}/>
-          <Route path='paypal-return' element={<PaypalReturn/>}/>
-          {/* <Route path='paypal-success' element={<PaymentSuccess/>}/> */}
+          <Route path="notifications" element={<Notifications />} />
+          <Route path='paypal-return' element={<PaypalReturn />} />
         </Route>
       </Routes>
     </div>

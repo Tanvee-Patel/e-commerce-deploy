@@ -43,12 +43,12 @@ const Orders = () => {
   }
 
   return (
-    <Card className="shadow-lg bg-white rounded-xl border border-gray-200 p-6">
-      <CardHeader className="border-b pb-4">
-        <CardTitle className="text-2xl font-semibold text-gray-800">Order History</CardTitle>
+    <Card className="shadow-lg bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-xl border border-gray-200 p-6">
+      <CardHeader className="pb-4">
+        <CardTitle className="text-2xl font-semibold text-white">Order History</CardTitle>
       </CardHeader>
       <CardContent>
-        <Table className="w-full text-gray-700 border border-gray-200 rounded-xl">
+        <Table className="w-full text-gray-700 bg-white border border-gray-200 rounded-xl">
           <TableHeader>
             <TableRow className="bg-gray-100 text-gray-900">
               <TableHead className="py-3 w-auto text-center">Order Id</TableHead>

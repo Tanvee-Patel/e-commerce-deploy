@@ -10,7 +10,7 @@ function ResetPassword() {
   const { resetToken } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch()
-  
+
   const location = useLocation()
   const queryParams = new URLSearchParams(location.search);
   const email = queryParams.get('email')
@@ -38,41 +38,41 @@ function ResetPassword() {
       toast.error('Something went wrong. Please try again.');
     }
   };
-  
+
   return (
-    <div className="flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-7 rounded-xl">
+    <div className="flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-black p-60 rounded-xl">
       <div className="w-full h-full max-w-lg space-y-12">
         <div className='text-center'>
-        <h1 className="text-3xl font-bold text-gray-900 tracking-tight mb-4 decoration-primary-300 decoration-3 underline-offset-4">Reset Password</h1>
+          <h1 className="text-3xl font-bold text-white tracking-tight mb-4 decoration-primary-300 decoration-3 underline-offset-4">Reset Password</h1>
         </div>
         <div className='rounded-xl shadow-sm space-y-6'>
-        <form onSubmit={handleSubmit} className="space-y-7 rounded-xl shadow-sm p-9">
-          <div>
-            {/* <label className="block text-gray-700 font-semibold mb-2">New Password</label> */}
-            <input
-              type="password"
-              placeholder="Enter New Password..."
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
-              className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-primary-500 focus:outline-none shadow-sm"
-            />
-          </div>
-          <div>
-            {/* <label className="block text-gray-700 font-semibold mb-2">Confirm Password</label> */}
-            <input
-              type="password"
-              placeholder="Confirm New Password..."
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-primary-500 focus:outline-none shadow-sm"
-            />
-          </div>
-          <button
-            type="submit"
-            className="max-w-full p-8 bg-primary-50 bg-blue-400 hover:bg-blue-500 py-3 rounded-xl font-medium hover:bg-primary-600 transition duration-300">
-            Reset Password
-          </button>
-        </form>
+          <form onSubmit={handleSubmit} className="space-y-7 rounded-xl shadow-sm p-8">
+            <div>
+              <input
+                type="password"
+                placeholder="Enter New Password..."
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-primary-500 focus:outline-none shadow-sm"
+              />
+            </div>
+            <div>
+              <input
+                type="password"
+                placeholder="Confirm New Password..."
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-primary-500 focus:outline-none shadow-sm"
+              />
+            </div>
+            <div className='flex justify-center'>
+              <button
+                type="submit"
+                className="max-w-full flex p-8 bg-primary-50 bg-blue-400 hover:bg-blue-500 py-3 rounded-xl font-medium hover:bg-primary-600 transition duration-300">
+                Reset Password
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

@@ -1,5 +1,4 @@
 import { LayoutDashboard, MessageSquareText, Package, ShoppingCart } from "lucide-react";
-
 import { SquareUserRound } from 'lucide-react'
 import React, { Fragment } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -30,7 +29,7 @@ const Sidebar = ({ open, setOpen }) => {
           </div>
         </SheetContent>
       </Sheet>
-      <aside className='hidden w-64 flex-col border-r bg-background p-6 lg:flex'>
+      <aside className='hidden w-52 flex-col border-r bg-background p-6 lg:flex'>
         <div
           onClick={() => navigate("/admin/dashboard")}
           className='flex cursor-pointer items-center gap-2'>
@@ -48,24 +47,24 @@ export const adminSidebarMenuItems = [
     id: 'dashboard',
     label: 'Dashboard',
     path: '/admin/dashboard',
-    icon: <LayoutDashboard />
+    icon: LayoutDashboard 
   },
   {
     id: 'products',
     label: 'Products',
     path: '/admin/products',
-    icon: <Package />
+    icon: Package 
   }, {
     id: 'orders',
     label: 'Orders',
     path: '/admin/orders',
-    icon: <ShoppingCart />
+    icon: ShoppingCart 
   },
   {
     id: 'messages',
     label: 'Messages',
     path: '/admin/messages',
-    icon: <MessageSquareText />
+    icon: MessageSquareText 
   },
 ]
 
@@ -73,22 +72,21 @@ const MenuItems = ({ setOpen }) => {
   const navigate = useNavigate();
   return (
     <nav className='mt-8 flex-col flex gap-2'>
-      {adminSidebarMenuItems.map((MenuItem) => (
+      {adminSidebarMenuItems.map(({ id, label, path, icon: Icon }) => (
         <div
           className='flex text-xl items-center gap-2 rounded-xl px-3 py-2 cursor-pointer text-muted-foreground hover:bg-muted hover:text-foreground '
-          key={MenuItem.id}
+          key={id}
           onClick={() => {
-            navigate(MenuItem.path);
+            navigate(path);
             setOpen ? setOpen(false) : null;
           }}
         >
-          {MenuItem.icon}
-          <span>{MenuItem.label}</span>
+          <Icon />
+          <span>{label}</span>
         </div>
       ))}
     </nav>
   );
 };
-
 
 export default Sidebar

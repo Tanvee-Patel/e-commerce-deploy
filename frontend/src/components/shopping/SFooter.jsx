@@ -4,10 +4,9 @@ import { FaFacebookF, FaTwitter, FaWhatsapp, FaPinterest, FaInstagram, FaFaceboo
 
 const SFooter = () => {
    return (
-      <footer className="text-black bg-white py-3 w-full mt-auto">
+      <footer className=" text-white py-1 w-full mt-auto">
          <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
 
-            {/* Brand Info */}
             <div>
                <h2 className="text-2xl font-bold mb-3">GlamLit</h2>
                <p className="text-gray-500 text-sm">
@@ -15,7 +14,6 @@ const SFooter = () => {
                </p>
             </div>
 
-            {/* Office Address */}
             <div>
                <h3 className="text-xl font-semibold mb-2">Office</h3>
                <p className="text-gray-500 text-sm pb-2">Surat, Gujarat, India</p>
@@ -25,7 +23,6 @@ const SFooter = () => {
                <p className="text-gray-500 text-sm">Phone: +91 77788 57425</p>
             </div>
 
-            {/* Quick Links */}
             <div>
                <h3 className="text-xl font-semibold mb-2">Quick Links</h3>
                <ul className="space-y-2 text-gray-500">
@@ -36,14 +33,13 @@ const SFooter = () => {
                </ul>
             </div>
 
-            {/* Social Media Links */}
             <div>
                <h3 className="text-xl font-semibold mb-2">Follow Us</h3>
-               <div className="flex space-x-4 mt-4">
-                  <Link to="#" className="text-2xl text-gray-400 hover:text-gray-700"><FaFacebook /></Link>
-                  <Link to="https://x.com/Tanvee_17" className="text-2xl text-gray-400 hover:text-gray-700"><FaTwitter /></Link>
-                  <Link to="#" className="text-2xl text-gray-400 hover:text-gray-700"><FaInstagram /></Link>
-                  <Link to="https://in.pinterest.com/tanveedpatel8577/" className="text-2xl text-gray-400 hover:text-gray-700"><FaPinterest /></Link>
+               <div className="flex space-x-14 mt-4">
+                  <Link to="#" className="text-2xl text-gray-400 hover:text-gray-200"><FaFacebook /></Link>
+                  <Link to="https://x.com/Tanvee_17" className="text-2xl text-gray-400 hover:text-gray-200"><FaTwitter /></Link>
+                  <Link to="#" className="text-2xl text-gray-400 hover:text-gray-200"><FaInstagram /></Link>
+                  {/* <Link to="https://in.pinterest.com/tanveedpatel8577/" className="text-2xl text-gray-400 hover:text-gray-200"><FaPinterest /></Link> */}
                </div>
             </div>
          </div>

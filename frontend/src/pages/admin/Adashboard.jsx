@@ -65,7 +65,7 @@ const Adashboard = () => {
               <div className='relative group' key={featureImageItem?._id}>
                 <img
                   src={featureImageItem?.image}
-                  className='w-full h-[300px] object-cover rounded-xl'
+                  className='w-full h-auto object-cover mb-5 rounded-xl'
                 />
                 <Button
                 onClick={()=>handleDeleteFeatureImage(featureImageItem?._id)}

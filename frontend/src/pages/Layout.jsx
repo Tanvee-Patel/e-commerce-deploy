@@ -1,17 +1,50 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const Layout = () => {
   return (
+    <div className="flex w-full h-screen items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+      <div className="flex flex-col md:flex-row w-full h-full border border-gray-700 rounded-xl overflow-hidden shadow-xl backdrop-blur-lg">
+        
+        <motion.div 
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+          className="w-full md:w-1/2 flex flex-col items-center justify-center bg-white/10 backdrop-blur-md p-12 text-center rounded-l-xl"
+        >
+          <h1 className="text-5xl font-bold text-white drop-shadow-lg font-sans">
+            Welcome, Shopper!
+          </h1>
+          <motion.p 
+            className="text-gray-300 text-xl mt-6 tracking-wide leading-relaxed"
+          >
+            {"Your futuristic shopping awaits.".split("").map((letter, index) => (
+              <motion.span 
+                key={index} 
+                initial={{ opacity: 0, y: -10 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                transition={{ delay: index * 0.1 }}
+              >
+                {letter}
+              </motion.span>
+            ))}
+          </motion.p>
+        </motion.div>
 
-    <div className="flex w-full items-center justify-center bg-gradient-to-br from-white via-gray-100 to-gray-50">
-      <div className="h-[100vh] w-full bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 bg-white/60 border border-gray-300 rounded-xl text-center p-3 shadow-lg">
-        <h1 className="text-6xl sm:text-4xl mt-11 font-extrabold text-gray-900 drop-shadow-lg">Welcome, shopper!</h1>
-        <p className="text-gray-700 mb-6 text-base sm:text-lg mt-5">Your futuristic shopping awaits.</p>
-        <Outlet />
+        <motion.div 
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+          className="w-full md:w-1/2 flex flex-col justify-center h-full p-8 bg-white/10 backdrop-blur-md rounded-r-xl"
+        >
+          <div className="flex items-center justify-center">
+            <Outlet />
+          </div>
+        </motion.div>
       </div>
     </div>
   );
-}; 
+};
 
 export default Layout;

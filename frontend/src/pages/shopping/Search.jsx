@@ -61,21 +61,21 @@ const Search = () => {
    }
 
    return (
-      <div className='bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 container mx-auto md:px-6 px-4 py-8'>
+      <div className='container mx-auto md:px-6 px-4 py-8 rounded-xl h-fit'>
          <div className='flex justify-center mb-8'>
             <div className='w-full flex items-center'>
                <Input
                   value={keyword}
                   name="keyword"
                   onChange={(e) => setKeyword(e.target.value)}
-                  className="py-6"
+                  className="py-6 text-white rounded-xl"
                   placeholder="Search Products"
                />
             </div>
          </div>
          {
             !searchResults.length ?
-               <h3 className='text-5xl font-extrabold'>No Results found</h3> :
+               <h3 className='text-5xl text-white font-extrabold'>No Results found</h3> :
                null
          }
          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5'>

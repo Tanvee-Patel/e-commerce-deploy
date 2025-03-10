@@ -108,7 +108,7 @@ const Home = () => {
   }
 
 return (
-  <div className="min-h-screen bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 flex flex-col">
+  <div className="min-h-screen flex flex-col">
     <div className="relative w-full h-[600px]">
       {
         featureImageList && featureImageList.length > 0 
@@ -149,7 +149,7 @@ return (
               onClick={() => {
                 handleNavigateToListingPage('category', categoryItem,);
               }}
-              className="cursor-pointer hover:shadow-2xl transition-all bg-gray-100 rounded-xl">
+              className="cursor-pointer hover:shadow-2xl transition-all bg-gray-100 text-blue-950 rounded-xl">
               <CardContent className="flex flex-col items-center justify-center p-8">
                 {React.createElement(categoryItem.icon, { className: "w-14 h-14 mb-4 text-primary" })}
                 <span className="text-lg font-semibold text-gray-900">{categoryItem.label}</span>
@@ -170,7 +170,7 @@ return (
               onClick={() => {
                 handleNavigateToListingPage('brand', brandItem,);
               }}
-              className="cursor-pointer hover:shadow-2xl transition-all bg-gray-100 rounded-xl">
+              className="cursor-pointer hover:shadow-2xl transition-all bg-gray-100 text-blue-950 rounded-xl">
               <CardContent className="flex flex-col items-center justify-center p-8">
                 <brandItem.icon className="w-14 h-14 mb-4 text-primary" />
                 <span className="text-lg font-semibold text-gray-900">{brandItem.label}</span>
@@ -178,9 +178,6 @@ return (
             </Card>
           ))}
         </div>
-        {/* <p className="text-center mt-6 text-primary-500 font-medium hover:underline cursor-pointer text-blue-600">
-          <Link to="/user/listing">View More Brands</Link>
-        </p> */}
       </div>
     </section>
 

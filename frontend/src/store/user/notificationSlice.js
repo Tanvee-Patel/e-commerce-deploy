@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const fetchNotifications = createAsyncThunk("notifications/fetch", async (_, { rejectWithValue }) => {
+export const fetchNotifications = createAsyncThunk("notifications/fetch", async (userId, { rejectWithValue }) => {
   try {
-    const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/notifications/get`);
+    const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/notifications/get/${userId}`);
     return Array.isArray(response.data) ? response.data : [];
   } catch (error) {
     return rejectWithValue(error.response.data);

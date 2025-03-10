@@ -38,16 +38,16 @@ const AOrders = () => {
    }, [orderDetails])
 
    return (
-      <div className="bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center px-4 py-8">
-         <div className="w-full max-w-full space-y-8">
-            <Card className="bg-white rounded-xl p-8">
+      <div className="flex items-center justify-center px-4">
+         <div className="w-full">
+            <Card className="rounded-xl p-8">
                <CardHeader>
-                  <CardTitle className="text-3xl font-bold text-gray-900 tracking-tight mb-4 text-center">
+                  <CardTitle className="text-3xl font-bold text-white tracking-tight mb-8 text-center">
                      All Orders
                   </CardTitle>
                </CardHeader>
                <CardContent>
-                  <Table className="w-full border border-gray-200 items-center">
+                  <Table className="w-full border border-gray-200 bg-white items-center">
                      <TableHeader>
                         <TableRow className="bg-gray-100 border-b border-gray-400">
                            <TableHead className="w-1/5 text-center text-base font-medium text-gray-700">Order Id</TableHead>
@@ -55,7 +55,6 @@ const AOrders = () => {
                            <TableHead className="w-1/5 text-center text-base font-medium text-gray-700">Order Status</TableHead>
                            <TableHead className="w-1/5 text-center text-base font-medium text-gray-700">Order Price</TableHead>
                            <TableHead className="w-1/5 text-center text-base font-medium text-gray-700"> Details
-                              {/* <span className="sr-only">Details</span> */}
                            </TableHead>
                         </TableRow>
                      </TableHeader>

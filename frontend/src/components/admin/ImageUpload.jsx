@@ -56,7 +56,7 @@ const ImageUpload = ({ imageFile,
             <div
                onDragOver={handleDragOver}
                onDrop={handleDrop}
-               className={`${isEditMode ? "opacity-60" : ""} border-2 border-dashed rounded-xl p-4 bg-white`}
+               className={`${isEditMode ? "opacity-60" : ""} border-4 border-dashed rounded-xl p-4 bg-white`}
             >
                <Label className="text-lg font-semibold mb-2 block">
                   Upload Image

@@ -14,7 +14,7 @@ const CartWrapper = ({ cartItems, setOpenCartSheet }) => {
       ) * currentItem?.quantity, 0) : 0
 
    return (
-      <SheetContent className="sm:max-w-md bg-white">
+      <SheetContent className="sm:max-w-md bg-white overflow-auto">
          <SheetHeader>
             <SheetTitle>
                Your Cart

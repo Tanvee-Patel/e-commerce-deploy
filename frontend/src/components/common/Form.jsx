@@ -15,7 +15,6 @@ const Form = ({ formControlls, formData, setFormData, onSubmit, buttonText, isBt
       case 'input':
         return (
           <div className="relative w-full">
-
             <Input
               name={name}
               placeholder={placeholder}
@@ -89,7 +88,6 @@ const Form = ({ formControlls, formData, setFormData, onSubmit, buttonText, isBt
     }
   }
 
-
   return (
     <form onSubmit={onSubmit}>
       <div className="flex flex-col gap-3">
@@ -102,12 +100,14 @@ const Form = ({ formControlls, formData, setFormData, onSubmit, buttonText, isBt
           </div>
         ))}
       </div>
+      <div className='flex justify-center'>
       <Button
         disabled={isBtnDisabled}
         type="submit"
         className={`rounded-xl mt-8 max-w-full ${buttonText === 'Edit' ? 'bg-green-400 hover:bg-green-500' : 'bg-blue-400 hover:bg-blue-500'} font-semibold`} >
         {buttonText || 'Submit'}
       </Button>
+      </div>
     </form>
   );
 };
