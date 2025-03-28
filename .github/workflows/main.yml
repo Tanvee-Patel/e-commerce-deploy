@@ -3,10 +3,10 @@ name: Docker CI/CD
 on:
   push:
     branches:
-      - main  # Change this if using a different branch
+      - master  # Change this if using a different branch
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   build-and-push:
