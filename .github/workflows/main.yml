@@ -1,0 +1,32 @@
+name: Docker CI/CD
+
+on:
+  push:
+    branches:
+      - main  # Change this if using a different branch
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.Tanu@1709 }}" | docker login -u "${{ secrets.tanveepatel }}" --password-stdin
+
+      - name: Build and Push Backend Image
+        run: |
+          docker build -t ${{ secrets.tanveepatel }}/mern-backend:latest ./backend
+          docker push ${{ secrets.tanveepatel }}/mern-backend:latest
+
+      - name: Build and Push Frontend Image
+        run: |
+          docker build -t ${{ secrets.tanveepatel }}/mern-frontend:latest ./frontend
+          docker push ${{ secrets.tanveepatel }}/mern-frontend:latest
+
+      - name: Log out from Docker Hub
+        run: docker logout
