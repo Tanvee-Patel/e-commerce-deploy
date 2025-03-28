@@ -23,12 +23,10 @@ const adminNotificationsRouter = require('./routes/admin/notificationRoutes')
 const notificationsRouter = require('./routes/user/notificationRoutes')
 
 const app = express()
-const PORT = process.env.PORT || 3000; 
+const PORT = process.env.PORT || 3000;
 
-mongoose.connect(process.env.MONGO_URI,{
-useNewUrlParser: true,
-  useUnifiedTopology: true,
-  serverSelectionTimeoutMS: 40000,
+mongoose.connect(process.env.MONGO_URI, {
+   serverSelectionTimeoutMS: 40000,
 })
    .then(() => console.log("MongoDB connected successfully!"))
    .catch((err) => console.error(err));

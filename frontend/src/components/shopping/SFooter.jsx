@@ -35,9 +35,9 @@ const SFooter = () => {
 
             <div>
                <h3 className="text-xl font-semibold mb-2">Follow Us</h3>
-               <div className="flex space-x-14 mt-4">
+               <div className="flex space-x-8 mt-4">
                   <Link to="#" className="text-2xl text-gray-400 hover:text-gray-200"><FaFacebook /></Link>
-                  <Link to="https://x.com/Tanvee_17" className="text-2xl text-gray-400 hover:text-gray-200"><FaTwitter /></Link>
+                  <Link to="#" className="text-2xl text-gray-400 hover:text-gray-200"><FaTwitter /></Link>
                   <Link to="#" className="text-2xl text-gray-400 hover:text-gray-200"><FaInstagram /></Link>
                   {/* <Link to="https://in.pinterest.com/tanveedpatel8577/" className="text-2xl text-gray-400 hover:text-gray-200"><FaPinterest /></Link> */}
                </div>

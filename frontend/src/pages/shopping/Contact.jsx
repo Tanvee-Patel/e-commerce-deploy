@@ -44,7 +44,7 @@ const Contact = () => {
 
                   <div className="flex space-x-4">
                      <Link to="#" className="text-blue-600 text-2xl hover:text-blue-800"><FaFacebook /></Link>
-                     <Link to="https://x.com/Tanvee_17" className="text-blue-400 text-2xl hover:text-blue-600"><FaTwitter /></Link>
+                     <Link to="#" className="text-blue-400 text-2xl hover:text-blue-600"><FaTwitter /></Link>
                      <Link to="#" className="text-pink-500 text-2xl hover:text-pink-700"><FaInstagram /></Link>
                      {/* <Link to="https://in.pinterest.com/tanveedpatel8577/" className="text-red-600 text-2xl hover:text-red-800"><FaPinterest /></Link> */}
                   </div>

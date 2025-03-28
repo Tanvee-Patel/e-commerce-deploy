@@ -12,11 +12,13 @@ const OrderDetails = ({ orderDetails }) => {
       if (!orderDate) return 'N/A'
       const deliveryDate = new Date(orderDate)
       deliveryDate.setDate(deliveryDate.getDate() + 7)
-      return deliveryDate.toDateString().split('T')[0]
+      return deliveryDate.toISOString().split('T')[0]
    }
 
    return (
-      <DialogContent className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white flex items-center justify-center h-[90vh] overflow-y-auto">
+      <DialogContent
+         description="Detailed order information including order ID, status, payment details, and shipping info."
+         className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white flex items-center justify-center h-[90vh] overflow-y-auto">
          <div className="w-full rounded-xl p-4 space-y-6 max-h-[80vh]">
             <div className="text-center">
                <DialogTitle className="text-3xl font-extrabold text-white tracking-tight">
@@ -70,14 +72,14 @@ const OrderDetails = ({ orderDetails }) => {
                         </li>
                         {
                            orderDetails?.cartItems && orderDetails.cartItems.length > 0 ?
-                              orderDetails?.cartItems.map(item =>
-                                 <li className='flex items-center justify-between'>
+                              orderDetails?.cartItems.map((item, index) =>
+                                 <li key={item._id || index} className='flex items-center justify-between'>
                                     <span className='w-1/4'>{item.title}</span>
                                     <span className='w-1/4 text-center'>{item.quantity}</span>
-                                    <span className='w-1/4 text-right'>  
-                                    {item?.salePrice > 0 ? (
-                                       <span className="line-through text-red-500">{item?.price}</span>
-                                    ) : ( item?.price )}</span>
+                                    <span className='w-1/4 text-right'>
+                                       {item?.salePrice > 0 ? (
+                                          <span className="line-through text-red-500">{item?.price}</span>
+                                       ) : (item?.price)}</span>
                                     <span className='w-1/4 text-right'>$ {item?.salePrice} </span>
                                  </li>) : null
                         }

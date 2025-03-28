@@ -154,7 +154,7 @@ const SHeader = () => {
               <span className='sr-only'>Toggle header menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="w-full max-w-xs bg-white p-4" aria-describedby={undefined}>
+          <SheetContent side="left" className="w-full max-w-72 bg-white p-4" aria-describedby={undefined}>
             <DialogTitle className="sr-only">Header Menu</DialogTitle>
             <HeaderRightContent closeMenu={handleClose} />
             <MenuItems closeMenu={handleClose} />

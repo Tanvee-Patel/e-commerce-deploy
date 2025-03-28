@@ -1,49 +1,49 @@
-const mongoose = require ('mongoose')
-const bcrypt = require ('bcryptjs')
+const mongoose = require('mongoose')
+const bcrypt = require('bcryptjs')
 
 const userSchema = new mongoose.Schema({
-   username:{
+   username: {
       type: String,
       required: true,
       trim: true
    },
-   email:{
+   email: {
       type: String,
       required: true,
       unique: true,
       trim: true,
       match: /^\S+@\S+\.\S+$/
    },
-   password:{
+   password: {
       type: String,
       required: true,
       minlength: 6
    },
-   role:{
+   role: {
       type: String,
       default: 'user',
       enum: ['user', 'admin']
    }
 },
-{
-   timestamps: true,
-})
+   {
+      timestamps: true,
+   })
 
-userSchema.methods.hashPassword = async function() {
+userSchema.methods.hashPassword = async function () {
    try {
-     const salt = await bcrypt.genSalt(10); 
-     this.password = await bcrypt.hash(this.password, salt); 
+      const salt = await bcrypt.genSalt(10);
+      this.password = await bcrypt.hash(this.password, salt);
    } catch (error) {
-     throw new Error('Error hashing password');
+      throw new Error('Error hashing password');
    }
- };
- 
- userSchema.methods.comparePassword = async function (password) {
+};
+
+userSchema.methods.comparePassword = async function (password) {
    try {
-     const isMatch = await bcrypt.compare(password, this.password);
-     return isMatch;  
+      const isMatch = await bcrypt.compare(password, this.password);
+      return isMatch;
    } catch (error) {
-     throw new Error('Password comparison failed');
+      throw new Error('Password comparison failed');
    }
 };
 

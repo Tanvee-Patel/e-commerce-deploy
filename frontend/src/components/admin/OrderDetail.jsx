@@ -28,7 +28,7 @@ const OrderDetail = ({ orderDetail }) => {
          id: orderDetail?._id,
          orderStatus: status
       }))
-         .then(data => {            
+         .then(data => {
             if (data?.payload?.success) {
                dispatch(getAdminOrderDetails(orderDetail?._id))
                dispatch(getAllOrderOfAllUsers())
@@ -50,9 +50,14 @@ const OrderDetail = ({ orderDetail }) => {
          })
          .finally(() => setUpdating(false))
    }
-   
+
    return (
-      <DialogContent className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white flex items-center justify-center overflow-y-auto">
+      <DialogContent
+         aria-describedby="order-details"
+         className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white flex items-center justify-center overflow-y-auto">
+         <div id="order-details" className="sr-only">
+            Detailed order information including order ID, status, payment details, and shipping info.
+         </div>
          <div className="w-full rounded-xl p-4 space-y-6 max-h-[80vh]">
             <div className="text-center">
                <DialogTitle className="text-3xl font-extrabold text-white tracking-tight mb-4">
@@ -108,11 +113,11 @@ const OrderDetail = ({ orderDetail }) => {
                                     <span className='w-1/4'>{item.title}</span>
                                     <span className='w-1/4 text-center'>{item.quantity}</span>
                                     <span className='w-1/4 text-right'>
-                                    {
-                                       item?.salePrice > 0 ? (
-                                          <span className="line-through text-red-500">{item.price}</span>
-                                       ) : (item?.price)
-                                    }</span>
+                                       {
+                                          item?.salePrice > 0 ? (
+                                             <span className="line-through text-red-500">{item.price}</span>
+                                          ) : (item?.price)
+                                       }</span>
                                     <span className="w-1/4 text-right">$ {item.salePrice}</span>
                                  </li>) : null
                         }
