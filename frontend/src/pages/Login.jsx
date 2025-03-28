@@ -54,7 +54,7 @@ const Login = () => {
     <div className="flex items-center justify-center p-7 rounded-xl">
       <div className="w-full h-full space-y-7">
         <div className="text-center">
-          <h1 className="text-3xl font-bold bg-violet-400 text-white tracking-tight mb-4 decoration-primary-300 decoration-3 underline-offset-4">
+          <h1 className="text-3xl font-bold bg-blue-400 text-white tracking-tight mb-4 decoration-primary-300 decoration-3 underline-offset-4">
           Sign In to Explore More!
           </h1>
           <p className="text-xl text-white/70 pt-3">
