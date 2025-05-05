@@ -1,8 +1,10 @@
 {
-  "name": "frontend",
-  "private": true,
+  "name": "@tanvee__/e-commerce-frontend",
   "version": "0.0.0",
   "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",

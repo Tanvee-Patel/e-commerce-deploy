@@ -125,7 +125,7 @@ const Listing = () => {
               <span className='text-gray-500'>{productList?.length} products</span>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="outline" size="sm" className="flex items-center gap-1">
+                  <Button variant="outline" size="sm" className="flex text-gray-500 items-center gap-1">
                     <ArrowUpDown className='h-4 w-4' />
                     <span>Sort by</span>
                   </Button>
