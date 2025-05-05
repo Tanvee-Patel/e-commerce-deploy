@@ -130,7 +130,7 @@ const Listing = () => {
                     <span>Sort by</span>
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-[200px]">
+                <DropdownMenuContent align="end" className="w-[200px] bg-white">
                   <DropdownMenuRadioGroup value={sort} onValueChange={handleSort}>
                     {
                       sortOptions.map((sortItem) =>
